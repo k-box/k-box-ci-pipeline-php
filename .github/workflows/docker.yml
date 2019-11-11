@@ -1,6 +1,9 @@
 name: Build Docker Image
 
 on: 
+  push:
+    branches: 
+      - "master"
   pull_request:
     types: [opened, synchronize, reopened]
 
@@ -21,3 +24,13 @@ jobs:
     - name: Run Goss 
       run: |
         docker run -t --rm -v $(pwd):/var/www/html $NAMESPACE:$IMAGE_VERSION goss -g goss.yml v
+    - name: Prepare push
+      uses: azure/docker-login@v1
+      if: github.event_name == 'push'
+      with:
+        username: ${{ secrets.CI_REGISTRY_USER }}
+        password: ${{ secrets.CI_REGISTRY_PASSWORD }}
+    - name: Push the Docker image
+      if: github.event_name == 'push'
+      run: |
+        docker push $NAMESPACE:$IMAGE_VERSION
