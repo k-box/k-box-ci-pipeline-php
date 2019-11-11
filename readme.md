@@ -47,7 +47,41 @@ container:
 ```
 
 
+### Gitlab pipeline examples
 
+This simple example shows how we run the unit test of the K-Box on Gitlab CI.
+
+```yaml
+# Variables
+variables:
+  MYSQL_ROOT_PASSWORD: root
+  MYSQL_USER: dms
+  MYSQL_PASSWORD: dms
+  MYSQL_DATABASE: dms
+  DB_HOST: mariadb
+
+test:
+  stage: test
+  services:
+    - mariadb:10.3
+  image: klinktech/k-box-ci-pipeline-php:7.2
+  script:
+    - cp env.ci .env
+    - mkdir ./storage/documents
+    - composer install --prefer-dist
+    - composer run install-video-cli
+    - composer run install-content-cli
+    - composer run install-language-cli
+    - composer run install-streaming-client
+    - php artisan view:clear
+    - php artisan config:clear
+    - php artisan route:clear
+    - php artisan migrate --env=testing --force
+    - php artisan db:seed --env=testing --force
+    - yarn install --pure-lockfile
+    - yarn run production
+    - vendor/bin/phpunit
+```
 
 ## License
 
