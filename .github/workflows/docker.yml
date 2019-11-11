@@ -15,10 +15,6 @@ jobs:
       NAMESPACE: 'klinktech/k-box-ci-pipeline-php'
       CI_COMMIT_SHORT_SHA: ${{github.sha}}
     steps:
-    - name: Dump GitHub context
-      env:
-        GITHUB_CONTEXT: ${{ toJson(github) }}
-      run: echo "$GITHUB_CONTEXT"
     - uses: actions/checkout@v1
     - name: Build the Docker image 
       run: |
