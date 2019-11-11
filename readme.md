@@ -1,5 +1,5 @@
 
-# Build and test [K-Box](https://github.com/k-box/k-box) with Gitlab CI (or any other CI platform)
+# Build and test K-Box with Gitlab CI (or any other CI platform)
 
 PHP Docker images with the necessary dependencies to execute [K-Box](https://github.com/k-box/k-box) development and testing.
 
