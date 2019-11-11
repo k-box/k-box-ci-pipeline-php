@@ -6,7 +6,7 @@ PHP Docker images with the necessary dependencies to execute [K-Box](https://git
 
 ## Based on [edbizarro/gitlab-ci-pipeline-php images](https://hub.docker.com/r/edbizarro/gitlab-ci-pipeline-php/)
 
-- ```7```, ```7.2```, ```latest``` [(7.2/Dockerfile)](https://github.com/k-box/k-box-ci-pipeline-php/blob/master/php/7.2/Dockerfile)
+- `7.2` [(7.2/Dockerfile)](https://github.com/k-box/k-box-ci-pipeline-php/blob/master/php/7.2/Dockerfile)
 
 
 All versions come with [Node 11](https://nodejs.org/en/), [Composer](https://getcomposer.org/) (with [hirak/prestissimo](https://github.com/hirak/prestissimo) to speed up installs) and [Yarn](https://yarnpkg.com)
@@ -90,4 +90,5 @@ Licensed under [MIT](./LICENSE).
 
 --------
 
-Special thanks to [Eduardo Bizarro](https://github.com/edbizarro) and his [gitlab-ci-pipeline-php images](https://hub.docker.com/r/edbizarro/gitlab-ci-pipeline-php/)..
+Special thanks to [Eduardo Bizarro](https://github.com/edbizarro) and
+his [gitlab-ci-pipeline-php images](https://hub.docker.com/r/edbizarro/gitlab-ci-pipeline-php/).
