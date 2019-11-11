@@ -79,6 +79,9 @@ file:
     exists: true
   /usr/local/etc/php/conf.d/php_timezone.ini:
     exists: true
+    contains: 
+      - "date.timezone=UTC"
+      - "!mv"
   /home/php:
     exists: true
     owner: php

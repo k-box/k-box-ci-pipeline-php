@@ -33,7 +33,7 @@ RUN yes | apt-get remove nodejs && \
     && rm -rf /var/lib/apt/lists/*
 
 # Insert the timezone and disable xdebug
-RUN echo "date.timezone=UTC" > /usr/local/etc/php/conf.d/php_timezone.ini \
+RUN echo "date.timezone=UTC" > /usr/local/etc/php/conf.d/php_timezone.ini && \
     mv /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.disabled
 
 USER $IMAGE_USER
