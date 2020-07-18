@@ -33,4 +33,4 @@ jobs:
     - name: Push the Docker image
       # if: github.event_name == 'push'
       run: |
-        cat $DOCKER_CONFIG
+        cat $DOCKER_CONFIG/config.json
