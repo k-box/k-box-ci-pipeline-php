@@ -32,5 +32,9 @@ jobs:
         password: ${{ secrets.CI_REGISTRY_PASSWORD }}
     - name: Push the Docker image
       # if: github.event_name == 'push'
+      env:
+        USERNAME: ${{ secrets.CI_REGISTRY_USER }}
+        PASSWORD: ${{ secrets.CI_REGISTRY_PASSWORD }}
       run: |
         cat $DOCKER_CONFIG/config.json
+        docker login -u "$USERNAME" -p "$PASSWORD"
