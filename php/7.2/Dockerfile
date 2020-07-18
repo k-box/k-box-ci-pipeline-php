@@ -23,8 +23,12 @@ RUN apt-get update -yqq && \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-# Insert the timezone and disable xdebug
+# Insert the timezone
+# Disable xdebug
+# Ensure PDF support is enabled in Image Magick
 RUN echo "date.timezone=UTC" > /usr/local/etc/php/conf.d/php_timezone.ini && \
-    mv /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.disabled
+    mv /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.disabled && \
+    sed -i -e '/rights="none" pattern="{PS,PDF,XPS}"/ s#<!--##g;s#-->##g;' /etc/ImageMagick-6/policy.xml && \
+    sed -i -e 's/rights="none" pattern="{PS,PDF,XPS}"/rights="read|write" pattern="PDF"/' /etc/ImageMagick-6/policy.xml
 
 USER $IMAGE_USER
