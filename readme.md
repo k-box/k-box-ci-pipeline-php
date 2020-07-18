@@ -5,7 +5,7 @@ PHP Docker images with the necessary dependencies to execute [K-Box](https://git
 
 Docker images are based on [edbizarro/gitlab-ci-pipeline-php images](https://hub.docker.com/r/edbizarro/gitlab-ci-pipeline-php/).
 
-All versions come with 
+All versions comes with:
 
 - [Node 12](https://nodejs.org/en/), 
 - [Composer](https://getcomposer.org/) (with [hirak/prestissimo](https://github.com/hirak/prestissimo) to speed up installs),
