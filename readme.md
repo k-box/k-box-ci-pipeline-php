@@ -3,15 +3,19 @@
 
 PHP Docker images with the necessary dependencies to execute [K-Box](https://github.com/k-box/k-box) development and testing.
 
+Docker images are based on [edbizarro/gitlab-ci-pipeline-php images](https://hub.docker.com/r/edbizarro/gitlab-ci-pipeline-php/).
 
-## Based on [edbizarro/gitlab-ci-pipeline-php images](https://hub.docker.com/r/edbizarro/gitlab-ci-pipeline-php/)
+All versions come with 
+
+- [Node 12](https://nodejs.org/en/), 
+- [Composer](https://getcomposer.org/) (with [hirak/prestissimo](https://github.com/hirak/prestissimo) to speed up installs),
+- [Yarn](https://yarnpkg.com)
+- Image Magick PHP extension and
+- [Gdal](https://gdal.org/).
+
+**Available PHP versions**
 
 - `7.2` [(7.2/Dockerfile)](https://github.com/k-box/k-box-ci-pipeline-php/blob/master/php/7.2/Dockerfile)
-
-
-All versions come with [Node 12](https://nodejs.org/en/), [Composer](https://getcomposer.org/) (with [hirak/prestissimo](https://github.com/hirak/prestissimo) to speed up installs) and [Yarn](https://yarnpkg.com).
-
->> PHP 7.0.x and 7.1.x are not supported. If you need a PHP 7.1 image for your build refer to the awesome [PHP images for Gitlab CI](https://github.com/edbizarro/gitlab-ci-pipeline-php) created by [Eduardo Bizarro](https://github.com/edbizarro).
 
 ## Usage
 
@@ -25,7 +29,7 @@ _as your development environment_
 # use it to host your development environment
 docker run -t --rm -v $(pwd):/var/www/html -p 8000:8000 klinktech/k-box-ci-pipeline-php:7.2 bash
 # then execute the K-Box developer installation and run php artisan serve
-# to keep this example short required additional services (e.g. MariaDB/MySQL) are not linked
+# to keep this example short additional services, like MariaDB/MySQL, are not linked
 ```
 
 _on Gitlab CI_
@@ -41,10 +45,12 @@ _on GitHub actions_
 # reference it as the container for a GitHub Action job
 container:
   image: klinktech/k-box-ci-pipeline-php:7.2
+  options: --user root 
 ```
 
+## Examples
 
-### Gitlab pipeline examples
+### Gitlab pipeline example
 
 This simple example shows how we run the unit test of the K-Box on Gitlab CI.
 
@@ -79,6 +85,65 @@ test:
     - yarn run production
     - vendor/bin/phpunit
 ```
+
+### GitHub Actions workflow example
+
+This simple example shows how to execute unit tests for a PHP project with 
+a MariaDB linked database using GitHub Actions.
+
+```yaml
+name: CI
+
+on: 
+  push:
+    branches: 
+      - "master"
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  phpunit:
+    name: Tests PHP 7.2
+    runs-on: ubuntu-latest
+    container: 
+      image: klinktech/k-box-ci-pipeline-php:7.2
+      options: --user root 
+
+    services:
+      mariadb:
+        image: mariadb:10
+        env:
+          MYSQL_DATABASE: example
+          MYSQL_USER: example
+          MYSQL_ROOT_PASSWORD: "example"
+          MYSQL_PASSWORD: "example"
+          MYSQL_INITDB_SKIP_TZINFO: 1
+        ports:
+          - 3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 1
+    
+    - name: Cache dependencies
+      uses: actions/cache@v1
+      with:
+        path: ~/.composer/cache/files
+        key: dependencies-php-7.2-composer-${{ hashFiles('composer.json') }}
+      
+    - name: Install dependencies
+      run: |
+        composer install --prefer-dist
+        
+    - name: Run Testsuite
+      run: |
+        vendor/bin/phpunit
+```
+
+> A more complex example can be seen in the 
+[K-Box repository](https://github.com/k-box/k-box/blob/master/.github/workflows/ci.yml)
 
 ## License
 
