@@ -142,8 +142,8 @@ jobs:
         vendor/bin/phpunit
 ```
 
-> A more complex example can be seen in the 
-[K-Box repository](https://github.com/k-box/k-box/blob/master/.github/workflows/ci.yml)
+> For a more complex example see the 
+[CI workflow in the K-Box repository](https://github.com/k-box/k-box/blob/master/.github/workflows/ci.yml)
 
 ## License
 
