@@ -4,6 +4,10 @@ package:
     installed: true
   sudo:
     installed: true
+  gdal-bin:
+    installed: true
+  ghostscript:
+    installed: true
 
 command:
   node --version:
