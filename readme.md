@@ -1,3 +1,4 @@
+![Build Docker Image](https://github.com/k-box/k-box-ci-pipeline-php/workflows/Build%20Docker%20Image/badge.svg)
 
 # Build and test K-Box with Gitlab CI (or any other CI platform)
 
@@ -16,6 +17,7 @@ All versions comes with:
 **Available PHP versions**
 
 - `7.2` [(7.2/Dockerfile)](https://github.com/k-box/k-box-ci-pipeline-php/blob/master/php/7.2/Dockerfile)
+- `7.4` [(7.4/Dockerfile)](https://github.com/k-box/k-box-ci-pipeline-php/blob/master/php/7.4/Dockerfile)
 
 ## Usage
 
@@ -144,6 +146,18 @@ jobs:
 
 > For a more complex example see the 
 [CI workflow in the K-Box repository](https://github.com/k-box/k-box/blob/master/.github/workflows/ci.yml)
+
+## Test
+
+Docker images are tested on every build using [Goss](https://github.com/aelsabbahy/goss).
+
+To run the test suite you need to build the Docker image first and then execute the goss
+command.
+
+```bash
+docker build -t k-box-pipeline:7.4 ./php/7.4/
+docker run --rm -v $(pwd):/var/www/html k-box-pipeline:7.4 goss -g goss.yml v
+```
 
 ## License
 
