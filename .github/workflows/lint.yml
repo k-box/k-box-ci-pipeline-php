@@ -16,4 +16,6 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Lint the Dockerfile
-      run: npx dockerfilelint ./php/7.2/Dockerfile
+      run: |
+        npx dockerfilelint ./php/7.2/Dockerfile
+        npx dockerfilelint ./php/7.4/Dockerfile

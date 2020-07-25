@@ -1,10 +1,10 @@
-FROM edbizarro/gitlab-ci-pipeline-php:7.2
+FROM edbizarro/gitlab-ci-pipeline-php:7.4
 
 ARG BUILD_DATE
 ARG VCS_REF
 
 LABEL maintainer="OneOffTech <info@oneofftech.xyz>" \
-  PHP="7.2" \
+  PHP="7.4" \
   NODE="12" \
   org.label-schema.name="klinktech/k-box-ci-pipeline-php" \
   org.label-schema.description="Docker image for build and test K-Box application with Gitlab CI (or any other CI platform!)" \

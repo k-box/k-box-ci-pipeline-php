@@ -10,8 +10,12 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        php: [7.2, 7.4]
     env:
-      IMAGE_VERSION: '7.2'
+      IMAGE_VERSION: ${{ matrix.php }}
       NAMESPACE: 'klinktech/k-box-ci-pipeline-php'
       CI_COMMIT_SHORT_SHA: ${{github.sha}}
     steps:
@@ -20,7 +24,7 @@ jobs:
       run: |
         docker pull php:$IMAGE_VERSION || true
         docker pull $NAMESPACE:$IMAGE_VERSION || true
-        docker build --compress --cache-from $NAMESPACE:$IMAGE_VERSION --build-arg VCS_REF=$CI_COMMIT_SHORT_SHA --build-arg BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ') -t $NAMESPACE:$IMAGE_VERSION -f php/7.2/Dockerfile .
+        docker build --compress --cache-from $NAMESPACE:$IMAGE_VERSION --build-arg VCS_REF=$CI_COMMIT_SHORT_SHA --build-arg BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ') -t $NAMESPACE:$IMAGE_VERSION -f php/${{ matrix.php }}/Dockerfile .
     - name: Run Goss 
       run: |
         docker run -t --rm -v $(pwd):/var/www/html $NAMESPACE:$IMAGE_VERSION goss -g goss.yml v
