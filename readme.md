@@ -8,7 +8,7 @@ Docker images are based on [edbizarro/gitlab-ci-pipeline-php images](https://hub
 
 All versions comes with:
 
-- [Node 12](https://nodejs.org/en/), 
+- [Node 14](https://nodejs.org/en/), 
 - [Composer](https://getcomposer.org/) (with [hirak/prestissimo](https://github.com/hirak/prestissimo) to speed up installs),
 - [Yarn](https://yarnpkg.com)
 - Image Magick PHP extension and

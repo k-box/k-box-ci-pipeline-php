@@ -5,7 +5,7 @@ ARG VCS_REF
 
 LABEL maintainer="OneOffTech <info@oneofftech.xyz>" \
   PHP="7.2" \
-  NODE="12" \
+  NODE="14" \
   org.label-schema.name="klinktech/k-box-ci-pipeline-php" \
   org.label-schema.description="Docker image for build and test K-Box application with Gitlab CI (or any other CI platform!)" \
   org.label-schema.build-date=$BUILD_DATE \
