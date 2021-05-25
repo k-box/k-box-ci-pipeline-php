@@ -16,7 +16,6 @@ All versions comes with:
 
 **Available PHP versions**
 
-- `7.2` [(7.2/Dockerfile)](https://github.com/k-box/k-box-ci-pipeline-php/blob/master/php/7.2/Dockerfile)
 - `7.4` [(7.4/Dockerfile)](https://github.com/k-box/k-box-ci-pipeline-php/blob/master/php/7.4/Dockerfile)
 
 ## Usage

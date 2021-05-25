@@ -16,7 +16,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        php: [7.2, 7.4]
+        php: [7.4]
     env:
       IMAGE_VERSION: ${{ matrix.php }}
       NAMESPACE: 'klinktech/k-box-ci-pipeline-php'
