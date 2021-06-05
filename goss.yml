@@ -28,6 +28,8 @@ command:
     exit-status: 0
   composer --version:
     exit-status: 0
+    stdout:
+      - "2"
   python --version:
     exit-status: 0
   make --version:
@@ -68,7 +70,6 @@ command:
       - mysqli
       - OPcache
       - pcntl
-      - pcov
       - pdo_mysql
       - pdo_pgsql
       - pgsql
