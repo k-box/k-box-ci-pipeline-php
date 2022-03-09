@@ -13,13 +13,13 @@ command:
   node --version:
     exit-status: 0
     stdout:
-      - "v14"
+      - "v16"
   yarn --version:
     exit-status: 0
   npm --version:
     exit-status: 0
     stdout:
-      - "6"
+      - "8"
   php -r "echo join(',', Imagick::queryFormats('PDF'));":
     exit-status: 0
     stdout:
@@ -41,29 +41,21 @@ command:
   php -m:
     exit-status: 0
     stdout:
-      - amqp
-      - apcu
       - bcmath
       - bz2
       - calendar
-      - cassandra
       - exif
       - gd
       - iconv
       - imagick
-      - imap
       - intl
-      - ldap
       - mbstring
-      - memcached
-      - mysqli
       - OPcache
       - pcntl
       - pdo_mysql
       - pdo_pgsql
       - redis
       - xml
-      - xmlrpc
       - zip
 file:
   /usr/local/etc/php/conf.d/zz-conf.ini:
@@ -83,9 +75,6 @@ file:
     exists: true
     owner: php
   /home/php/.composer:
-    exists: true
-    owner: php
-  /home/php/.config:
     exists: true
     owner: php
   /etc/ImageMagick-6/policy.xml:
