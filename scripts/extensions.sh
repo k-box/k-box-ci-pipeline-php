@@ -15,6 +15,7 @@ curl -sSLf \
     imagick-stable \
     xdebug-stable \
     bcmath \
+    bz2 \
     calendar \
     exif \
     gd \
