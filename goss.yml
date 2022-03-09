@@ -30,16 +30,6 @@ command:
     exit-status: 0
     stdout:
       - "2"
-  python --version:
-    exit-status: 0
-  make --version:
-    exit-status: 0
-  gcc --version:
-    exit-status: 0
-  g++ --version:
-    exit-status: 0
-  jq --version:
-    exit-status: 0
   gdalinfo --version:
     exit-status: 0
   ogrinfo --version:
@@ -66,15 +56,12 @@ command:
       - ldap
       - mbstring
       - memcached
-      - mongodb
       - mysqli
       - OPcache
       - pcntl
       - pdo_mysql
       - pdo_pgsql
-      - pgsql
       - redis
-      - soap
       - xml
       - xmlrpc
       - zip

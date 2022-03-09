@@ -4,7 +4,7 @@
 
 PHP Docker images with the necessary dependencies to execute [K-Box](https://github.com/k-box/k-box) development and testing.
 
-Docker images are based on [edbizarro/gitlab-ci-pipeline-php images](https://hub.docker.com/r/edbizarro/gitlab-ci-pipeline-php/).
+Docker images are inspired or based on [edbizarro/gitlab-ci-pipeline-php images](https://github.com/edbizarro/gitlab-ci-pipeline-php).
 
 All versions comes with:
 
