@@ -18,8 +18,6 @@ command:
     exit-status: 0
   npm --version:
     exit-status: 0
-    stdout:
-      - "8"
   php -r "echo join(',', Imagick::queryFormats('PDF'));":
     exit-status: 0
     stdout:
