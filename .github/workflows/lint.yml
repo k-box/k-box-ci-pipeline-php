@@ -19,3 +19,4 @@ jobs:
       run: |
         npx dockerfilelint ./php/7.4/Dockerfile
         npx dockerfilelint ./php/8.1/Dockerfile
+        npx dockerfilelint ./php/8.2/Dockerfile

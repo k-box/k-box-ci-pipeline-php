@@ -6,6 +6,10 @@ The versioning follows the PHP version number. Docker images are
 tagged with PHP major and minor releases, builds are generated
 from the `master` branch.
 
+## 2022-12-11
+
+- Add PHP 8.2
+
 ## 2020-07-25
 
 - Add PHP 7.4 image [#14](https://github.com/k-box/k-box-ci-pipeline-php/pull/14)
