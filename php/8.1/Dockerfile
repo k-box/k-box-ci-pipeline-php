@@ -1,4 +1,4 @@
-FROM php:8.1.13
+FROM php:8.2.0
 
 ARG BUILD_DATE
 ARG VCS_REF
