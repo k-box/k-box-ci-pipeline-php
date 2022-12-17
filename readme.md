@@ -16,8 +16,10 @@ All versions comes with:
 
 **Available PHP versions**
 
-- `7.4` [(7.4/Dockerfile)](https://github.com/k-box/k-box-ci-pipeline-php/blob/master/php/7.4/Dockerfile)
 - `8.1` [(8.1/Dockerfile)](https://github.com/k-box/k-box-ci-pipeline-php/blob/master/php/8.1/Dockerfile)
+- `8.2` [(8.2/Dockerfile)](https://github.com/k-box/k-box-ci-pipeline-php/blob/master/php/8.2/Dockerfile)
+
+PHP version 8.1 is not actively updated, old Docker tags still works.
 
 ## Usage
 
@@ -29,7 +31,7 @@ _as your development environment_
 
 ```bash
 # use it to host your development environment
-docker run -t --rm -v $(pwd):/var/www/html -p 8000:8000 klinktech/k-box-ci-pipeline-php:7.4 bash
+docker run -t --rm -v $(pwd):/var/www/html -p 8000:8000 klinktech/k-box-ci-pipeline-php:8.1 bash
 # then execute the K-Box developer installation and run php artisan serve
 # to keep this example short additional services, like MariaDB/MySQL, are not linked
 ```
@@ -38,7 +40,7 @@ _on Gitlab CI_
 
 ```yaml
 # reference it as the source of a Gitlab CI job
-image: "klinktech/k-box-ci-pipeline-php:7.4"
+image: "klinktech/k-box-ci-pipeline-php:8.1"
 ```
 
 _on GitHub actions_
@@ -46,7 +48,7 @@ _on GitHub actions_
 ```yaml
 # reference it as the container for a GitHub Action job
 container:
-  image: klinktech/k-box-ci-pipeline-php:7.4
+  image: klinktech/k-box-ci-pipeline-php:8.1
   options: --user root 
 ```
 
@@ -69,7 +71,7 @@ test:
   stage: test
   services:
     - mariadb:10.3
-  image: klinktech/k-box-ci-pipeline-php:7.4
+  image: klinktech/k-box-ci-pipeline-php:8.1
   script:
     - cp env.ci .env
     - mkdir ./storage/documents
@@ -105,10 +107,10 @@ on:
 
 jobs:
   phpunit:
-    name: Tests PHP 7.4
+    name: Tests PHP 8.1
     runs-on: ubuntu-latest
     container: 
-      image: klinktech/k-box-ci-pipeline-php:7.4
+      image: klinktech/k-box-ci-pipeline-php:8.1
       options: --user root 
 
     services:
@@ -133,7 +135,7 @@ jobs:
       uses: actions/cache@v1
       with:
         path: ~/.composer/cache/files
-        key: dependencies-php-7.4-composer-${{ hashFiles('composer.json') }}
+        key: dependencies-php-8.1-composer-${{ hashFiles('composer.json') }}
       
     - name: Install dependencies
       run: |
@@ -155,8 +157,8 @@ To run the test suite you need to build the Docker image first and then execute 
 command.
 
 ```bash
-docker build -t k-box-pipeline:7.4 ./php/7.4/
-docker run --rm -v $(pwd):/var/www/html k-box-pipeline:7.4 goss -g goss.yml v
+docker build -t k-box-pipeline:8.1 ./php/8.1/
+docker run --rm -v $(pwd):/var/www/html k-box-pipeline:8.1 goss -g goss.yml v
 ```
 
 ## License
