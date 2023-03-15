@@ -31,7 +31,7 @@ _as your development environment_
 
 ```bash
 # use it to host your development environment
-docker run -t --rm -v $(pwd):/var/www/html -p 8000:8000 klinktech/k-box-ci-pipeline-php:8.1 bash
+docker run -t --rm -v $(pwd):/var/www/html -p 8000:8000 klinktechnology/k-box-ci-pipeline-php:8.1 bash
 # then execute the K-Box developer installation and run php artisan serve
 # to keep this example short additional services, like MariaDB/MySQL, are not linked
 ```
@@ -40,7 +40,7 @@ _on Gitlab CI_
 
 ```yaml
 # reference it as the source of a Gitlab CI job
-image: "klinktech/k-box-ci-pipeline-php:8.1"
+image: "klinktechnology/k-box-ci-pipeline-php:8.1"
 ```
 
 _on GitHub actions_
@@ -48,7 +48,7 @@ _on GitHub actions_
 ```yaml
 # reference it as the container for a GitHub Action job
 container:
-  image: klinktech/k-box-ci-pipeline-php:8.1
+  image: klinktechnology/k-box-ci-pipeline-php:8.1
   options: --user root 
 ```
 
@@ -71,7 +71,7 @@ test:
   stage: test
   services:
     - mariadb:10.3
-  image: klinktech/k-box-ci-pipeline-php:8.1
+  image: klinktechnology/k-box-ci-pipeline-php:8.1
   script:
     - cp env.ci .env
     - mkdir ./storage/documents
@@ -110,7 +110,7 @@ jobs:
     name: Tests PHP 8.1
     runs-on: ubuntu-latest
     container: 
-      image: klinktech/k-box-ci-pipeline-php:8.1
+      image: klinktechnology/k-box-ci-pipeline-php:8.1
       options: --user root 
 
     services:
