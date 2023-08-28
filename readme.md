@@ -8,7 +8,7 @@ Docker images are inspired or based on [edbizarro/gitlab-ci-pipeline-php images]
 
 All versions comes with:
 
-- [Node 16](https://nodejs.org/en/), 
+- [Node 18](https://nodejs.org/en/), 
 - [Composer 2](https://getcomposer.org/),
 - [Yarn](https://yarnpkg.com)
 - Image Magick PHP extension and
@@ -19,7 +19,7 @@ All versions comes with:
 - `8.1` [(8.1/Dockerfile)](https://github.com/k-box/k-box-ci-pipeline-php/blob/master/php/8.1/Dockerfile)
 - `8.2` [(8.2/Dockerfile)](https://github.com/k-box/k-box-ci-pipeline-php/blob/master/php/8.2/Dockerfile)
 
-PHP version 8.1 is not actively updated, old Docker tags still works.
+PHP version < 8.1 are not actively updated, old Docker tags still works.
 
 ## Usage
 
