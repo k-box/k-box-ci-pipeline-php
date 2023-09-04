@@ -28,7 +28,7 @@ export DEBIAN_FRONTEND=noninteractive
       build-essential \
       curl \
       git \
-      gnupg2 \
+      gnupg \
       libc-client-dev \
       mariadb-client \
       openssh-client \
@@ -40,8 +40,4 @@ export DEBIAN_FRONTEND=noninteractive
       gdal-bin \
       ghostscript \
       && rm -rf /var/lib/apt/lists/*
-
       
-    #   jq \
-    #   python \
-    #   python-dev \
