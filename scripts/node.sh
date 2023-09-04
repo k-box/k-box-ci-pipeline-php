@@ -6,9 +6,14 @@
 set -euo pipefail
 
 # NODE JS
-curl -sL https://deb.nodesource.com/setup_18.x | bash - \
-    && apt policy nodejs \
+mkdir -p /etc/apt/keyrings \
+    && curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg \
+    && NODE_MAJOR=18 \
+    && echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list \
+    && apt policy nodejs && apt update \
     && DEBIAN_FRONTEND=noninteractive apt-get install nodejs -yq \
+    && rm -r /etc/apt/sources.list.d/nodesource.list \
+    && rm -r /etc/apt/keyrings/nodesource.gpg \
     && npm i -g --force npm \
     && curl -o- -L https://yarnpkg.com/install.sh | bash \
     && curl -fsSL https://get.pnpm.io/install.sh | bash - \
