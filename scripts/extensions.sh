@@ -24,6 +24,7 @@ curl -sSLf \
     pdo_pgsql \
     pcntl \
     opcache \
+    soap \
     zip
     
 

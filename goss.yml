@@ -54,6 +54,7 @@ command:
       - pdo_pgsql
       - redis
       - xml
+      - soap
       - zip
 file:
   /usr/local/etc/php/conf.d/zz-conf.ini:
