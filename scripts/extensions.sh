@@ -12,7 +12,7 @@ curl -sSLf \
     IPE_GD_WITHOUTAVIF=1 install-php-extensions \
     @composer \
     redis-stable \
-    imagick-stable \
+    imagick/imagick@master \
     xdebug-stable \
     bcmath \
     bz2 \
