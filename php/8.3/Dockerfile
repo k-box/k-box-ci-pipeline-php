@@ -1,4 +1,4 @@
-FROM php:8.3.10-bullseye
+FROM php:8.3.11-bullseye
 
 ARG BUILD_DATE
 ARG VCS_REF
