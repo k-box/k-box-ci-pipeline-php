@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ## Original https://github.com/edbizarro/gitlab-ci-pipeline-php/blob/master/php/scripts/node.sh (c) Eduardo Bizarro
-## Modification: added gdal-bin and ghostscript
+## Modification: updated to node 22
 
 set -euo pipefail
 

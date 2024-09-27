@@ -5,9 +5,9 @@ package:
   sudo:
     installed: true
   gdal-bin:
-    installed: true
+    installed: false
   ghostscript:
-    installed: true
+    installed: false
 
 command:
   node --version:
@@ -28,14 +28,6 @@ command:
     exit-status: 0
     stdout:
       - "2"
-  gdalinfo --version:
-    exit-status: 0
-  ogrinfo --version:
-    exit-status: 0
-  ogr2ogr --version:
-    exit-status: 0
-  gdal_translate --version:
-    exit-status: 0
   php -m:
     exit-status: 0
     stdout:
@@ -52,6 +44,8 @@ command:
       - pcntl
       - pdo_mysql
       - pdo_pgsql
+      - sqlsrv
+      - pdo_sqlsrv
       - redis
       - xml
       - soap

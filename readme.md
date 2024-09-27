@@ -8,16 +8,16 @@ Docker images are inspired or based on [edbizarro/gitlab-ci-pipeline-php images]
 
 All versions comes with:
 
-- [Node 18](https://nodejs.org/en/), 
+- [Node 22](https://nodejs.org/en/), 
 - [Composer 2](https://getcomposer.org/),
 - [Yarn](https://yarnpkg.com)
-- Image Magick PHP extension and
-- [Gdal](https://gdal.org/).
+- Image Magick PHP extension.
 
 **Available PHP versions**
 
-- `8.1` [(8.1/Dockerfile)](https://github.com/k-box/k-box-ci-pipeline-php/blob/master/php/8.1/Dockerfile)
-- `8.2` [(8.2/Dockerfile)](https://github.com/k-box/k-box-ci-pipeline-php/blob/master/php/8.2/Dockerfile)
+- `8.1` [(8.1/Dockerfile)](./php/8.1/Dockerfile)
+- `8.2` [(8.2/Dockerfile)](./php/8.2/Dockerfile)
+- `8.3` [(8.3/Dockerfile)](./php/8.3/Dockerfile)
 
 PHP version < 8.1 are not actively updated, old Docker tags still works.
 
@@ -31,7 +31,7 @@ _as your development environment_
 
 ```bash
 # use it to host your development environment
-docker run -t --rm -v $(pwd):/var/www/html -p 8000:8000 klinktechnology/k-box-ci-pipeline-php:8.1 bash
+docker run -t --rm -v $(pwd):/var/www/html -p 8000:8000 klinktechnology/k-box-ci-pipeline-php:8.3 bash
 # then execute the K-Box developer installation and run php artisan serve
 # to keep this example short additional services, like MariaDB/MySQL, are not linked
 ```
@@ -40,7 +40,7 @@ _on Gitlab CI_
 
 ```yaml
 # reference it as the source of a Gitlab CI job
-image: "klinktechnology/k-box-ci-pipeline-php:8.1"
+image: "klinktechnology/k-box-ci-pipeline-php:8.3"
 ```
 
 _on GitHub actions_
@@ -48,7 +48,7 @@ _on GitHub actions_
 ```yaml
 # reference it as the container for a GitHub Action job
 container:
-  image: klinktechnology/k-box-ci-pipeline-php:8.1
+  image: klinktechnology/k-box-ci-pipeline-php:8.3
   options: --user root 
 ```
 
@@ -71,7 +71,7 @@ test:
   stage: test
   services:
     - mariadb:10.3
-  image: klinktechnology/k-box-ci-pipeline-php:8.1
+  image: klinktechnology/k-box-ci-pipeline-php:8.3
   script:
     - cp env.ci .env
     - mkdir ./storage/documents
@@ -107,10 +107,10 @@ on:
 
 jobs:
   phpunit:
-    name: Tests PHP 8.1
+    name: Tests PHP 8.3
     runs-on: ubuntu-latest
     container: 
-      image: klinktechnology/k-box-ci-pipeline-php:8.1
+      image: klinktechnology/k-box-ci-pipeline-php:8.3
       options: --user root 
 
     services:
@@ -135,7 +135,7 @@ jobs:
       uses: actions/cache@v1
       with:
         path: ~/.composer/cache/files
-        key: dependencies-php-8.1-composer-${{ hashFiles('composer.json') }}
+        key: dependencies-php-8.3-composer-${{ hashFiles('composer.json') }}
       
     - name: Install dependencies
       run: |
@@ -157,8 +157,8 @@ To run the test suite you need to build the Docker image first and then execute 
 command.
 
 ```bash
-docker build -t k-box-pipeline:8.1 ./php/8.1/
-docker run --rm -v $(pwd):/var/www/html k-box-pipeline:8.1 goss -g goss.yml v
+docker build -t k-box-pipeline:8.3 ./php/8.3/
+docker run --rm -v $(pwd):/var/www/html k-box-pipeline:8.3 goss -g goss.yml v
 ```
 
 ## License
