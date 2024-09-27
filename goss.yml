@@ -5,9 +5,9 @@ package:
   sudo:
     installed: true
   gdal-bin:
-    installed: true
+    installed: false
   ghostscript:
-    installed: true
+    installed: false
 
 command:
   node --version:
@@ -52,6 +52,7 @@ command:
       - pcntl
       - pdo_mysql
       - pdo_pgsql
+      - pdo_sqlsrv
       - redis
       - xml
       - soap

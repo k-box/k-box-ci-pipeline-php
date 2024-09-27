@@ -7,7 +7,7 @@ set -euo pipefail
 
 curl -sSLf \
         -o /usr/local/bin/install-php-extensions \
-        https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions && \
+        https://github.com/mlocati/docker-php-extension-installer/releases/download/2.5.0/install-php-extensions && \
     chmod +x /usr/local/bin/install-php-extensions && \
     IPE_GD_WITHOUTAVIF=1 install-php-extensions \
     @composer \
@@ -22,6 +22,7 @@ curl -sSLf \
     intl \
     pdo_mysql \
     pdo_pgsql \
+    pdo_sqlsrv \
     pcntl \
     opcache \
     soap \

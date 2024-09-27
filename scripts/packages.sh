@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 ## Original https://github.com/edbizarro/gitlab-ci-pipeline-php/blob/master/php/scripts/packages.sh (c) Eduardo Bizarro
-## Modification: added gdal-bin and ghostscript
 
 set -euo pipefail
 
@@ -37,7 +36,5 @@ export DEBIAN_FRONTEND=noninteractive
       unzip \
       zip \
       zlib1g-dev \
-      gdal-bin \
-      ghostscript \
       && rm -rf /var/lib/apt/lists/*
       
