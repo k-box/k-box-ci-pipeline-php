@@ -22,6 +22,7 @@ curl -sSLf \
     intl \
     pdo_mysql \
     pdo_pgsql \
+    sqlsrv \
     pdo_sqlsrv \
     pcntl \
     opcache \
