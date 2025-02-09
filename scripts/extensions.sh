@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
 
 ## Original https://github.com/edbizarro/gitlab-ci-pipeline-php/blob/master/php/scripts/extensions.sh (c) Eduardo Bizarro
-## Modification: Changed the way PHP extensions are installed as we target only PHP 8.1
+## Modification: Changed the way PHP extensions are installed
 
 set -euo pipefail
 
 curl -sSLf \
         -o /usr/local/bin/install-php-extensions \
-        https://github.com/mlocati/docker-php-extension-installer/releases/download/2.5.0/install-php-extensions && \
+        https://github.com/mlocati/docker-php-extension-installer/releases/download/2.7.23/install-php-extensions && \
     chmod +x /usr/local/bin/install-php-extensions && \
     IPE_GD_WITHOUTAVIF=1 install-php-extensions \
     @composer \
     redis-stable \
-    imagick/imagick@master \
+    imagick \
     xdebug-stable \
     bcmath \
     bz2 \
