@@ -28,3 +28,11 @@ updates:
     ignore:
       - dependency-name: "*"
         update-types: ["version-update:semver-minor"]
+
+  - package-ecosystem: "docker"
+    directory: "/php/8.4"
+    schedule:
+      interval: "weekly"
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-minor"]
