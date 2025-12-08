@@ -7,7 +7,7 @@ set -euo pipefail
 
 curl -sSLf \
         -o /usr/local/bin/install-php-extensions \
-        https://github.com/mlocati/docker-php-extension-installer/releases/download/2.7.23/install-php-extensions && \
+        https://github.com/mlocati/docker-php-extension-installer/releases/download/2.9.19/install-php-extensions && \
     chmod +x /usr/local/bin/install-php-extensions && \
     IPE_GD_WITHOUTAVIF=1 install-php-extensions \
     @composer \
@@ -27,7 +27,8 @@ curl -sSLf \
     pcntl \
     opcache \
     soap \
-    zip
+    zip \
+    xsl
     
 
 { \
