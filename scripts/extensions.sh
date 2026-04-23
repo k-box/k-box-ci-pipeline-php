@@ -18,6 +18,7 @@ curl -sSLf \
     bz2 \
     calendar \
     exif \
+    ffi \
     gd \
     intl \
     pdo_mysql \
