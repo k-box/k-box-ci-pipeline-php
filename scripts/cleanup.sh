@@ -9,7 +9,6 @@ apt-get purge -yq --auto-remove -o APT::AutoRemove::RecommendsImportant=false -o
     build-essential \
     dpkg-dev \
     file \
-    libc-client-dev \
     libc-dev \
     libpcre3-dev \
     pkg-config \
