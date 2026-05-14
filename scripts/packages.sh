@@ -28,7 +28,6 @@ export DEBIAN_FRONTEND=noninteractive
       curl \
       git \
       gnupg \
-      libc-client-dev \
       mariadb-client \
       openssh-client \
       rsync \

@@ -1,3 +1,5 @@
+# Deprecated - reached end of life in December 2025
+
 FROM php:8.1.33-bullseye
 
 ARG BUILD_DATE
