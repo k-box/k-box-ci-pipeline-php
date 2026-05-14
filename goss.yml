@@ -74,7 +74,7 @@ file:
   /home/php/.composer:
     exists: true
     owner: php
-  /etc/ImageMagick-6/policy.xml:
+  /etc/ImageMagick-7/policy.xml:
     exists: true
     contents:
       - "<policy domain=\"module\" rights=\"read|write\" pattern=\"PDF\" />"
