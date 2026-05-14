@@ -1,4 +1,4 @@
-FROM php:8.2.29-bullseye
+FROM php:8.2.31-trixie
 
 ARG BUILD_DATE
 ARG VCS_REF
@@ -40,8 +40,7 @@ RUN chmod +x /tmp/*.sh \
   && curl -fsSL https://goss.rocks/install | GOSS_VER=v${GOSS_VERSION} sh \
   && bash ./cleanup.sh \
   && mv /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.disabled \
-  && sed -i -e '/rights="none" pattern="{PS,PDF,XPS}"/ s#<!--##g;s#-->##g;' /etc/ImageMagick-6/policy.xml \
-  && sed -i -e 's/rights="none" pattern="{PS,PDF,XPS}"/rights="read|write" pattern="PDF"/' /etc/ImageMagick-6/policy.xml
+  && sed -i -e 's#</policymap>#  <policy domain="coder" rights="read|write" pattern="PDF"/>\n</policymap>#' /etc/ImageMagick-7/policy.xml
 
 WORKDIR /var/www/html
 
