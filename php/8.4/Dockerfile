@@ -5,7 +5,7 @@ ARG VCS_REF
 
 LABEL maintainer="OneOffTech <info@oneofftech.xyz>" \
   PHP="8.4" \
-  NODE="22" \
+  NODE="24" \
   org.label-schema.name="klinktech/k-box-ci-pipeline-php" \
   org.label-schema.description="Docker image for build and test K-Box application with Gitlab CI (or any other CI platform!)" \
   org.label-schema.build-date=$BUILD_DATE \
@@ -17,9 +17,8 @@ ENV IMAGE_USER=php
 ENV HOME=/home/$IMAGE_USER
 ENV COMPOSER_HOME=$HOME/.composer
 ENV PATH=$HOME/.yarn/bin:$PATH
-ENV GOSS_VERSION="0.3.16"
+ENV GOSS_VERSION="0.4.9"
 ENV PHP_VERSION=8.4
-ENV PNPM_VERSION=8.7.1
 
 USER root
 

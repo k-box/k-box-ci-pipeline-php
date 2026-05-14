@@ -8,9 +8,9 @@ Docker images are inspired or based on [edbizarro/gitlab-ci-pipeline-php images]
 
 All versions comes with:
 
-- [Node 22](https://nodejs.org/en/), 
+- [Node 24](https://nodejs.org/en/), 
 - [Composer 2](https://getcomposer.org/),
-- [Yarn](https://yarnpkg.com)
+- [Yarn](https://yarnpkg.com) and [PNPM](https://pnpm.io/)
 - Image Magick PHP extension.
 
 **Available PHP versions**
@@ -158,7 +158,7 @@ To run the test suite you need to build the Docker image first and then execute 
 command.
 
 ```bash
-docker build -t k-box-pipeline:8.4 ./php/8.4/
+docker build -t k-box-pipeline:8.4 -f php/8.4/Dockerfile .
 docker run --rm -v $(pwd):/var/www/html k-box-pipeline:8.4 goss -g goss.yml v
 ```
 

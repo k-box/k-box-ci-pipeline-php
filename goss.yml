@@ -16,14 +16,16 @@ command:
       - "v24"
   yarn --version:
     exit-status: 0
+    stdout:
+      - "1.22"
   npm --version:
     exit-status: 0
+    stdout:
+      - "11"
   php -r "echo join(',', Imagick::queryFormats('PDF'));":
     exit-status: 0
     stdout:
       - "PDF"
-  sudo npm --version:
-    exit-status: 0
   composer --version:
     exit-status: 0
     stdout:
@@ -39,6 +41,7 @@ command:
       - iconv
       - imagick
       - intl
+      - FFI
       - mbstring
       - OPcache
       - pcntl
@@ -54,7 +57,7 @@ command:
 file:
   /usr/local/etc/php/conf.d/zz-conf.ini:
     exists: true
-    contains:
+    contents:
       - memory_limit
   /usr/local/etc/php/conf.d/opcache-recommended.ini:
     exists: true
@@ -62,7 +65,7 @@ file:
     exists: true
   /usr/local/etc/php/conf.d/php_timezone.ini:
     exists: true
-    contains: 
+    contents: 
       - "date.timezone=UTC"
       - "!mv"
   /home/php:
@@ -73,7 +76,7 @@ file:
     owner: php
   /etc/ImageMagick-6/policy.xml:
     exists: true
-    contains:
+    contents:
       - "<policy domain=\"module\" rights=\"read|write\" pattern=\"PDF\" />"
 
 user:

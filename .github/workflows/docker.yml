@@ -18,30 +18,33 @@ jobs:
       NAMESPACE: 'klinktechnology/k-box-ci-pipeline-php'
       CI_COMMIT_SHORT_SHA: ${{github.sha}}
     steps:
-    - uses: actions/checkout@v4
-      with:
-        fetch-depth: 1
+    - uses: actions/checkout@v6
+
     - name: Define image version
       run: |
-        curl -sSLf https://github.com/keilerkonzept/dockerfile-json/releases/download/1.0.8/dockerfile-json_1.0.8_linux_x86_64.tar.gz -o ./dockerfile-json.tar.gz
+        curl -sSLf https://github.com/keilerkonzept/dockerfile-json/releases/download/v1.2.2/dockerfile-json_Linux_x86_64.tar.gz -o ./dockerfile-json.tar.gz
         tar -xvf ./dockerfile-json.tar.gz
         chmod +x dockerfile-json
         baseImage=$(./dockerfile-json php/${{ matrix.php }}/Dockerfile | jq -r '.Stages[] | select(.From | .Stage or .Scratch | not) | .BaseName' | cut -c4-)
         echo "IMAGE_VERSION=${baseImage#:}" >> $GITHUB_ENV
         rm -f dockerfile-json*
+    
     - name: Build the Docker image 
       run: |
         docker pull $NAMESPACE:${{ matrix.php }} || true
         docker build --compress --cache-from $NAMESPACE:${{ matrix.php }} --build-arg VCS_REF=$CI_COMMIT_SHORT_SHA --build-arg BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ') -t $NAMESPACE:$IMAGE_VERSION -f php/${{ matrix.php }}/Dockerfile .
+    
     - name: Run Goss 
       run: |
         docker run -t --rm -v $(pwd):/var/www/html $NAMESPACE:$IMAGE_VERSION goss -g goss.yml v
+    
     - name: Prepare push
-      uses: azure/docker-login@v1
+      uses: docker/login-action@v4
       if: github.event_name == 'push'
       with:
         username: ${{ secrets.CI_REGISTRY_USER }}
         password: ${{ secrets.CI_REGISTRY_PASSWORD }}
+    
     - name: Push the Docker image
       if: github.event_name == 'push'
       run: |
