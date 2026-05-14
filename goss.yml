@@ -77,7 +77,7 @@ file:
   /etc/ImageMagick-7/policy.xml:
     exists: true
     contents:
-      - "<policy domain=\"module\" rights=\"read|write\" pattern=\"PDF\" />"
+      - "<policy domain=\"coder\" rights=\"read|write\" pattern=\"PDF\"/>"
 
 user:
   php:
