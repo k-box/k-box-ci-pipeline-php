@@ -19,8 +19,9 @@ All versions comes with:
 - `8.2` [(8.2/Dockerfile)](./php/8.2/Dockerfile)
 - `8.3` [(8.3/Dockerfile)](./php/8.3/Dockerfile)
 - `8.4` [(8.4/Dockerfile)](./php/8.4/Dockerfile)
+- `8.5` [(8.5/Dockerfile)](./php/8.5/Dockerfile)
 
-PHP version < 8.1 are not actively updated, old Docker tags still works.
+PHP version < 8.2 are not actively updated, old Docker tags still works.
 
 ## Usage
 
