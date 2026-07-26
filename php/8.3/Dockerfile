@@ -1,4 +1,4 @@
-FROM php:8.3.31-trixie
+FROM php:8.3.32-trixie
 
 ARG BUILD_DATE
 ARG VCS_REF
@@ -17,7 +17,6 @@ ENV IMAGE_USER=php
 ENV HOME=/home/$IMAGE_USER
 ENV COMPOSER_HOME=$HOME/.composer
 ENV PATH=$HOME/.yarn/bin:$PATH
-ENV GOSS_VERSION="0.4.9"
 ENV PHP_VERSION=8.3
 
 USER root
@@ -37,7 +36,6 @@ RUN chmod +x /tmp/*.sh \
   mkdir -p /var/www/html \
   && rm -rf ~/.composer/cache/* \
   && chown -R $IMAGE_USER:$IMAGE_USER /var/www $HOME \
-  && curl -fsSL https://goss.rocks/install | GOSS_VER=v${GOSS_VERSION} sh \
   && bash ./cleanup.sh \
   && mv /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.disabled \
   && sed -i -e 's#</policymap>#  <policy domain="coder" rights="read|write" pattern="PDF"/>\n</policymap>#' /etc/ImageMagick-7/policy.xml
