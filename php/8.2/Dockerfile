@@ -1,4 +1,4 @@
-FROM php:8.2.33-trixie
+FROM php:8.2.35-trixie
 
 ARG BUILD_DATE
 ARG VCS_REF
